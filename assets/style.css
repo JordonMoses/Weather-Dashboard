@@ -1,0 +1,28 @@
+.h1 {
+    font-size: 36px;
+    color: white;
+}
+
+.navbar {
+    background-color: #007BFF;
+}
+
+.card { 
+    margin: 10px;
+}
+
+#weatherCards {
+    margin: 10px;
+}
+
+.card-header {
+    background-color: #007BFF;
+    color: white;
+}
+
+.btn {
+    background-color: #007BFF;
+    border-color: white;
+    color: white;
+    
+}
