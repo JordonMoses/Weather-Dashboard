@@ -18,7 +18,7 @@
         <container>
             <div class="row" style="margin-left: 5px;">
                 <div class="col-sm-3 card">
-                    <div id="expandHeader" class="card-header"><h5>City & Date</h5></div>
+                    <div id="expandHeader" class="card-header"><h5>City</h5></div>
                     <br>
                     <form class="form-inline">
                         <input class="form-control mr-sm-2" id="city-search" type="text" placeholder="Search" aria-label="Search">
@@ -28,20 +28,15 @@
 
                     <div class="card" style="width: 18rem;">
                         <ul class="list-group list-group-flush" id="history">
-                          <li class="list-group-item btn">City 1</li>
-                          <li class="list-group-item btn">City 2</li>
-                          <li class="list-group-item btn">City 3</li>
+                          
                         </ul>
                       </div>
 
                 </div>
                 <div class="col">
                     <div class="row card">
-                        <h5 class="card-header">City & Date</h5>
-                        <div class="card-body">
-                          <p class="card-text">Temperature:</p>
-                          <p class="card-text">Humidity:</p>
-                          <p class="card-text">Wind Speed:</p>
+                        <h5 class="card-header" id="cityDate">City & Date</h5>
+                        <div class="card-body" id="selectedCity">
                           <p class="card-text">UV Index:</p>
                         </div>
                       </div>
@@ -49,35 +44,35 @@
                     <br>
 
                     <div class="row" id="weatherCards">
-                        <div class="col-sm-2 card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="col-sm-2 card text-white bg-primary mb-3" id="weatherCardOne" style="max-width: 18rem;">
                             <div class="card-header">Date</div>
                             <div class="card-body">
                               <p class="card-text">Temp:</p>
                               <p class="card-text">Humidity:</p>
                             </div>
                         </div>
-                        <div class="col-sm-2 card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="col-sm-2 card text-white bg-primary mb-3" id="weatherCardTwo" style="max-width: 18rem;">
                             <div class="card-header">Date</div>
                             <div class="card-body">
                               <p class="card-text">Temp:</p>
                               <p class="card-text">Humidity:</p>
                             </div>
                         </div>
-                        <div class="col-sm-2 card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="col-sm-2 card text-white bg-primary mb-3" id="weatherCardThree" style="max-width: 18rem;">
                             <div class="card-header">Date</div>
                             <div class="card-body">
                               <p class="card-text">Temp:</p>
                               <p class="card-text">Humidity:</p>
                             </div>
                         </div>
-                        <div class="col-sm-2 card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="col-sm-2 card text-white bg-primary mb-3" id="weatherCardFour" style="max-width: 18rem;">
                             <div class="card-header">Date</div>
                             <div class="card-body">
                               <p class="card-text">Temp:</p>
                               <p class="card-text">Humidity:</p>
                             </div>
                         </div>
-                        <div class="col-sm-2 card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="col-sm-2 card text-white bg-primary mb-3" id="weatherCardFive" style="max-width: 18rem;">
                             <div class="card-header">Date</div>
                             <div class="card-body">
                               <p class="card-text">Temp:</p>
@@ -91,6 +86,7 @@
         </container>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/script.js"></script>
 </body>
 </html>
