@@ -21,13 +21,13 @@
                     <div id="expandHeader" class="card-header"><h5>City & Date</h5></div>
                     <br>
                     <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <input class="form-control mr-sm-2" id="city-search" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="search-button" type="button">Search</button>
                     </form>
                     <br>
 
                     <div class="card" style="width: 18rem;">
-                        <ul class="list-group list-group-flush">
+                        <ul class="list-group list-group-flush" id="history">
                           <li class="list-group-item btn">City 1</li>
                           <li class="list-group-item btn">City 2</li>
                           <li class="list-group-item btn">City 3</li>
@@ -90,7 +90,7 @@
             </div>
         </container>
     </main>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/script.js"></script>
 </body>
 </html>
