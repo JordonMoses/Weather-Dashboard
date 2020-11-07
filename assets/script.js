@@ -39,6 +39,11 @@ function renderCityButtons() {
 
     let userCity = JSON.parse(localStorage.getItem("city"));
     console.log(userCity)
+
+    if (JSON.parse(localStorage.getItem("city")) === null){
+        return;
+    }
+
     // Loops through the array of movies
     for (var i = 0; i < userCity.length; i++) {
 
@@ -51,7 +56,6 @@ function renderCityButtons() {
         $("#history").prepend(li);
     }
 }
-
 
 renderCityButtons();
 
