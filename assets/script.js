@@ -2,10 +2,7 @@
 let APIKey = "50012762a1eb2a9ece8edda2d39d7fc2";
 let searchButton = document.querySelector("#search-button");
 let citySearchValue = document.querySelector("#city-search");
-
 let searchHistory = $("#history");
-// let newCity = $("<li>");
-// newCity.addClass("list-group-item btn");
 
 // Array
 let cities = [];
@@ -19,7 +16,6 @@ function findWeather() {
 
 
 function renderNewButtons() {
-    console.log("New Button")
 
     let userCityInput = citySearchValue.value
     console.log(userCityInput)
@@ -55,6 +51,9 @@ function renderCityButtons() {
 
         $("#history").prepend(li);
     }
+    let mostRecentCity = cities[0-1]
+    console.log
+    generateWeatherData(mostRecentCity)
 }
 
 renderCityButtons();
@@ -63,14 +62,7 @@ renderCityButtons();
 
 function generateWeatherData(city) {
 
-
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
-    console.log(queryURL)
-
-    // if (citySearchValue.value == "") {
-    //     alert("You must enter a valid city name.");
-    //     return false;
-    // }
 
     // AJAX CALL 1
     $.ajax({
@@ -85,7 +77,7 @@ function generateWeatherData(city) {
         let cityHumidity = response.main.humidity;
         let cityWind = response.wind.speed;
         let currentIconCode = response.weather[0].icon;
-        let currentIconUrl = "https://openweathermap.org/img/w/" + currentIconCode + ".png";
+        let currentIconUrl = "https://openweathermap.org/img/wn/" + currentIconCode + ".png";
         console.log(currentIconUrl)
 
         let latitude = response.coord.lat;
@@ -145,7 +137,7 @@ function generateWeatherData(city) {
                 let iconDiv = $("<div>");
                 let icon = $("<img>");
                 let iconCode = response.daily[i].weather[0].icon
-                let iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
+                let iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
 
                 icon.attr("src", iconUrl)
                 newCard.addClass("col-sm-2 card text-white bg-primary mb-3");
