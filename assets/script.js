@@ -84,19 +84,24 @@ function generateWeatherData(city) {
         let cityTemp = (response.main.temp - 273.15) * 1.8 + 32;
         let cityHumidity = response.main.humidity;
         let cityWind = response.wind.speed;
+        let currentIconCode = response.weather[0].icon;
+        let currentIconUrl = "https://openweathermap.org/img/w/" + currentIconCode + ".png";
+        console.log(currentIconUrl)
 
         let latitude = response.coord.lat;
         let longitude = response.coord.lon;
         let queryURLTwo = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=" + "minutely" + "&appid=" + APIKey;
 
-        console.log(longitude);
-
         // Updates Current Weather Div 
         let t = $("<p>").text("Temperature: " + cityTemp.toFixed(1) + " \u00B0F");
         let h = $("<p>").text("Humidity: " + cityHumidity + "%");
         let w = $("<p>").text("Wind Speed: " + cityWind + "mph");
+        let currentIconImg = $("<img>");
 
+
+        currentIconImg.attr("src", currentIconUrl)
         $("#cityDate").text(response.name + moment().format(" - MMM Do"));
+        $("#cityDate").append(currentIconImg);
         $("#selectedCity").html(t);
         $("#selectedCity").append(h);
         $("#selectedCity").append(w);
@@ -124,7 +129,7 @@ function generateWeatherData(city) {
             }
 
             // Updates for 5 Day Forecast
-            for (let i = 0; i < 5; i++) {
+            for (let i = 1; i < 6; i++) {
 
                 let fiveTemp = (response.daily[i].temp.day - 273.15) * 1.8 + 32;
                 let fiveHumidity = response.daily[i].humidity;
