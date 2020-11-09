@@ -3,6 +3,9 @@ let APIKey = "50012762a1eb2a9ece8edda2d39d7fc2";
 let searchButton = document.querySelector("#search-button");
 let citySearchValue = document.querySelector("#city-search");
 let searchHistory = $("#history");
+let lastSearchedCity = JSON.parse(localStorage.getItem("city"));
+let mostRecent = lastSearchedCity[lastSearchedCity.length - 1];
+
 
 // Array
 let cities = [];
@@ -18,7 +21,6 @@ function findWeather() {
 function renderNewButtons() {
 
     let userCityInput = citySearchValue.value
-    console.log(userCityInput)
     // Loops through the array of movies
         let li = $("<li>");
 
@@ -31,10 +33,8 @@ function renderNewButtons() {
 
 
 function renderCityButtons() {
-    console.log("Something Happened!")
 
     let userCity = JSON.parse(localStorage.getItem("city"));
-    console.log(userCity)
 
     if (JSON.parse(localStorage.getItem("city")) === null){
         return;
@@ -51,12 +51,11 @@ function renderCityButtons() {
 
         $("#history").prepend(li);
     }
-    let mostRecentCity = cities[0-1]
-    console.log
-    generateWeatherData(mostRecentCity)
+
 }
 
 renderCityButtons();
+generateWeatherData(mostRecent);
 
 
 
@@ -78,7 +77,6 @@ function generateWeatherData(city) {
         let cityWind = response.wind.speed;
         let currentIconCode = response.weather[0].icon;
         let currentIconUrl = "https://openweathermap.org/img/wn/" + currentIconCode + ".png";
-        console.log(currentIconUrl)
 
         let latitude = response.coord.lat;
         let longitude = response.coord.lon;
@@ -105,19 +103,28 @@ function generateWeatherData(city) {
         }).then(function (response) {
 
             console.log(response);
-            console.log(response.current.uvi);
 
             let cityUV = response.current.uvi;
-            let u = $("<p>").text("UV Index: " + cityUV);
+            let u = $("<p>").text("UV Index: ");
+            let uvIndexNum = $("<span>").text(cityUV)
+            
             
             $("#selectedCity").append(u)
+            u.append(uvIndexNum)
 
-            if (cityUV >= 0 && cityUV < 3) {
-                $(u).addClass("favorable");
-            } else if (cityUV >= 3 && cityUV < 8) {
-                $(u).addClass("moderate");
-            } else if (cityUV >= 8) {
-                $(u).addClass("severe");
+
+            uvClass()
+
+            function uvClass() {
+
+                if (cityUV >= 0 && cityUV < 3) {
+                    $(uvIndexNum).addClass("badge badge-success");
+                } else if (cityUV >= 3 && cityUV < 8) {
+                    $(uvIndexNum).addClass("badge badge-warning");
+                } else if (cityUV >= 8) {
+                    $(uvIndexNum).addClass("badge badge-danger");
+                }
+
             }
 
             // Updates for 5 Day Forecast
@@ -155,9 +162,6 @@ function generateWeatherData(city) {
                 newCard.prepend(newCardHead);
                 $("#weatherCards").append(newCard);
 
-                console.log(response.daily[i].humidity)
-                console.log(response.daily[i].temp.day)
-                console.log(fiveDate)
             }
 
         });
@@ -191,7 +195,6 @@ $("#search-button").on("click", function (event) {
 
 $(document).on("click", ".list-group-item", function () {
     let newCityName = $(this).text();
-    console.log(newCityName)
 
     generateWeatherData(newCityName)
 
