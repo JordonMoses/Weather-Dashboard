@@ -3,7 +3,7 @@
 
 
 ## Project Overview ##
-
+This project is a simple weather dashboard that generates the current weather and 5 day forecast for city searched for by the user. It utlizizes open weather apis to generate the data. It also stores the users searches so they can return and see the weather conditions for previous searches. The site also loads the most recent search when the user returns. 
 
 
 ## Screenshot ##
