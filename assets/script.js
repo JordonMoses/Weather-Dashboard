@@ -64,7 +64,6 @@ renderCityButtons();
 // Genereate Query 
 function generateWeatherData(city) {
 
-
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
     // AJAX CALL 1
@@ -185,6 +184,7 @@ function runCalls() {
 };
 
 $("#search-button").on("click", function (event) {
+    
     event.preventDefault();
     runCalls()
 });
@@ -195,34 +195,3 @@ $(document).on("click", ".list-group-item", function () {
     generateWeatherData(newCityName)
 
 });
-
-
-
-
-// ------------------------------ Other code
-
-// let userCityInput = citySearchValue.value
-
-// cities.push(userCityInput);
-
-
-// Buttons
-// $(document).on("click", "#search-button", findWeather);
-
-// -----was once at line 21-------
-// function displayWeather() { 
-//     // let userCity = JSON.parse(localStorage.getItem("city"));
-//     // newCity.text(userCity);
-//     // searchHistory.prepend(newCity);
-// }
-
-// ----- once at line 40
-// renderLastSearch ()
-
-// function renderLastSearch() {
-//     let userCity = JSON.parse(localStorage.getItem("city"));
-//     newCity.text(userCity);
-// }
-
-
-
