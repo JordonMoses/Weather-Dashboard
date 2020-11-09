@@ -3,9 +3,15 @@ let APIKey = "50012762a1eb2a9ece8edda2d39d7fc2";
 let searchButton = document.querySelector("#search-button");
 let citySearchValue = document.querySelector("#city-search");
 let searchHistory = $("#history");
-let lastSearchedCity = JSON.parse(localStorage.getItem("city"));
-let mostRecent = lastSearchedCity[lastSearchedCity.length - 1];
 
+
+$(document).ready(function () {
+    let lastSearchedCity = JSON.parse(localStorage.getItem("city"));
+    if (lastSearchedCity?.length > 0) {
+        let mostRecent = lastSearchedCity[lastSearchedCity.length - 1];
+      generateWeatherData(mostRecent);    
+    } 
+})
 
 // Array
 let cities = [];
@@ -16,7 +22,6 @@ function findWeather() {
     cities.push(cityName);
     localStorage.setItem("city", JSON.stringify(cities));
 }
-
 
 function renderNewButtons() {
 
@@ -30,7 +35,6 @@ function renderNewButtons() {
 
         $("#history").prepend(li);
 }
-
 
 function renderCityButtons() {
 
@@ -51,15 +55,15 @@ function renderCityButtons() {
 
         $("#history").prepend(li);
     }
-
 }
 
+
 renderCityButtons();
-generateWeatherData(mostRecent);
 
 
-
+// Genereate Query 
 function generateWeatherData(city) {
+
 
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
@@ -175,9 +179,6 @@ function generateWeatherData(city) {
 // On click saves input to local storage
 function runCalls() {
 
-    // $("#history").empty();
-    // $("#selectedCity").empty();
-
     generateWeatherData(citySearchValue.value)
     findWeather();
     renderNewButtons();
@@ -188,17 +189,14 @@ $("#search-button").on("click", function (event) {
     runCalls()
 });
 
-
-// function loadSearchCity() {
-//     $("#history").empty();
-// }
-
 $(document).on("click", ".list-group-item", function () {
     let newCityName = $(this).text();
 
     generateWeatherData(newCityName)
 
 });
+
+
 
 
 // ------------------------------ Other code
@@ -225,3 +223,6 @@ $(document).on("click", ".list-group-item", function () {
 //     let userCity = JSON.parse(localStorage.getItem("city"));
 //     newCity.text(userCity);
 // }
+
+
+

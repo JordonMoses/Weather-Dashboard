@@ -7,11 +7,12 @@
 
 
 ## Screenshot ##
+![Weather Dashboard Screenshot](https://user-images.githubusercontent.com/70240665/98490989-fe7ad180-21f8-11eb-98c6-19b995c44170.png)
 
 
 
 ## HTML Sample ##
-
+```
 <div class="col-sm-3 card">
                     <div id="expandHeader" class="card-header"><h5>City Search</h5></div>
                     <br>
@@ -30,9 +31,17 @@
                       </div>
 
                 </div>
+```
 
 ## JavaScript Sample ##
-
+```
+currentIconImg.attr("src", currentIconUrl)
+        $("#cityDate").text(response.name + moment().format(" - MMM Do"));
+        $("#cityDate").append(currentIconImg);
+        $("#selectedCity").html(t);
+        $("#selectedCity").append(h);
+        $("#selectedCity").append(w);
+```
 
 
 ## Deployed Application ##
