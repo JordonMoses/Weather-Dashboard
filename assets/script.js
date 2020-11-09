@@ -9,8 +9,8 @@ $(document).ready(function () {
     let lastSearchedCity = JSON.parse(localStorage.getItem("city"));
     if (lastSearchedCity?.length > 0) {
         let mostRecent = lastSearchedCity[lastSearchedCity.length - 1];
-      generateWeatherData(mostRecent);    
-    } 
+        generateWeatherData(mostRecent);
+    }
 })
 
 // Array
@@ -27,20 +27,20 @@ function renderNewButtons() {
 
     let userCityInput = citySearchValue.value
     // Loops through the array of movies
-        let li = $("<li>");
+    let li = $("<li>");
 
-        li.addClass("list-group-item btn");
+    li.addClass("list-group-item btn");
 
-        li.text(userCityInput);
+    li.text(userCityInput);
 
-        $("#history").prepend(li);
+    $("#history").prepend(li);
 }
 
 function renderCityButtons() {
 
     let userCity = JSON.parse(localStorage.getItem("city"));
 
-    if (JSON.parse(localStorage.getItem("city")) === null){
+    if (JSON.parse(localStorage.getItem("city")) === null) {
         return;
     }
 
@@ -110,8 +110,8 @@ function generateWeatherData(city) {
             let cityUV = response.current.uvi;
             let u = $("<p>").text("UV Index: ");
             let uvIndexNum = $("<span>").text(cityUV)
-            
-            
+
+
             $("#selectedCity").append(u)
             u.append(uvIndexNum)
 
@@ -169,7 +169,7 @@ function generateWeatherData(city) {
 
         });
 
-        
+
 
     });
 
@@ -184,7 +184,7 @@ function runCalls() {
 };
 
 $("#search-button").on("click", function (event) {
-    
+
     event.preventDefault();
     runCalls()
 });
